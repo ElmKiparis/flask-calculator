@@ -1,4 +1,4 @@
-name: Flask Calculator
+name: Flask Calculator 2
 
 on:
   push:
