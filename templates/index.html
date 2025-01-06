@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+
+<html>
+
+	<head>
+
+		<title> Flask Calculator </title>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+	</head>
+	
+	<body>
+	
+		<h1 class="title"> Flask Calculator </h1>
+
+		<form class="form" action="{{ url_for('index') }}" method="post">
+
+			<input type="number" name="a" step=".001" placeholder="Enter a" required>
+			<input type="number" name="b" step=".001" placeholder="Enter b" required>
+
+			<div class="action-container">
+
+				<input type="submit" name="action" value="+">
+				<input type="submit" name="action" value="-">
+				<input type="submit" name="action" value="*">
+				<input type="submit" name="action" value="/">
+				<input type="submit" name="action" value="^">
+
+			</div>
+
+		</form>
+
+		{% if result is not none %}
+			<p class="result"> Result: {{ result }} </p>
+		{% endif %}
+	
+	</body>
+
+</html>
