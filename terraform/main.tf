@@ -2,7 +2,7 @@ variable "REPOSITORY_URI" {
   type = string
 }
 
-resource "aws_lightsail_container_service" "flask_calculator_3" {
+resource "aws_lightsail_container_service" "flask_calculator" {
   name  = "flask-calculator"
   power = "nano"
   scale = 1
@@ -18,7 +18,7 @@ resource "aws_lightsail_container_service" "flask_calculator_3" {
   }
 }
 
-resource "aws_lightsail_container_service_deployment_version" "flask_calculator_deployment_3" {
+resource "aws_lightsail_container_service_deployment_version" "flask_calculator_deployment" {
   container {
     container_name = "flask-calculator"
     image          = "${var.REPOSITORY_URI}:latest"
@@ -41,6 +41,6 @@ resource "aws_lightsail_container_service_deployment_version" "flask_calculator_
     }
   }
   
-  service_name = aws_lightsail_container_service.flask_calculator_3.name
+  service_name = aws_lightsail_container_service.flask_calculator.name
   
 }
