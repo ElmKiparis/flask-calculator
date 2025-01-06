@@ -2,8 +2,8 @@ variable "REPOSITORY_URI" {
   type = string
 }
 
-resource "aws_lightsail_container_service" "flask_calculator" {
-  name  = "flask-calculator"
+resource "aws_lightsail_container_service" "flask_application" {
+  name  = "flask-app"
   power = "nano"
   scale = 1
 
@@ -18,9 +18,9 @@ resource "aws_lightsail_container_service" "flask_calculator" {
   }
 }
 
-resource "aws_lightsail_container_service_deployment_version" "flask_calculator_deployment" {
+resource "aws_lightsail_container_service_deployment_version" "flask_app_deployment" {
   container {
-    container_name = "flask-calculator"
+    container_name = "flask-application"
     image          = "${var.REPOSITORY_URI}:latest"
     ports = {
       8080 = "HTTP"
@@ -28,7 +28,7 @@ resource "aws_lightsail_container_service_deployment_version" "flask_calculator_
   }
 
   public_endpoint {
-    container_name = "flask-calculator"
+    container_name = "flask-application"
     container_port = 8080
 
     health_check {
@@ -41,6 +41,6 @@ resource "aws_lightsail_container_service_deployment_version" "flask_calculator_
     }
   }
   
-  service_name = aws_lightsail_container_service.flask_calculator.name
+  service_name = aws_lightsail_container_service.flask_application.name
   
 }
